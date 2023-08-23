@@ -1,3 +1,50 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "semi": ["error", "never"],
+    "no-console": "warn",
+    "no-trailing-spaces": ["error"],
+    "space-before-blocks": ["warn", "always"],
+    "space-in-parens": ["error", "always"],
+    "space-infix-ops": ["error", { "int32Hint": false }],
+    "space-unary-ops": ["error", { "words": true, "nonwords": false }],
+    "spaced-comment": ["error", "always"],
+    "arrow-spacing": ["error", { "before": true, "after": true }],
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+    "keyword-spacing": ["error", { "before": true, "after": true }],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "no-whitespace-before-property": ["error"],
+    "padded-blocks": ["error", "never"],
+    "quotes": ["error", "single"],
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "react/no-children-prop": "off",
+    "react/no-unknown-property": "off",
+    "react/no-deprecated": "off",
+    "array-bracket-spacing": ["error", "never"],
+    "eol-last": ["error", "always"],
+    "no-mixed-spaces-and-tabs": [
+      "error",
+      {
+        "indent": "tabs", // Indentación con tabulaciones
+        "spaces": 2 // 2 espacios para la alineación
+      }
+    ],
+    "indent": [
+      "error",
+      2,
+      {
+        "outerIIFEBody": 4,
+        "SwitchCase": 1
+      }
+    ]
+  }
 }
