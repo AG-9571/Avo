@@ -1,6 +1,7 @@
 // db of products
 import data from '../data.json'
 import { db } from './db'
+import { IdbProducts } from '../Interfaces/IdbProduct'
 
 export class dbProducts extends db<Object> implements IdbProducts {
   public constructor() {

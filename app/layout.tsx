@@ -21,7 +21,7 @@ export default function RootLayout( {
       <body className="">
         <HeaderComponents />
         {children}
-        <FooterComponents />
+        {/* <FooterComponents /> */}
       </body>
     </html>
   )

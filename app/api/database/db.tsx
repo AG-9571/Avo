@@ -1,4 +1,6 @@
 /* eslint indent: ["error", 4] */
+import { IDb } from '../Interfaces/Idb'
+
 export class db<Tdb> implements IDb<Object>
 {
     // constructor
