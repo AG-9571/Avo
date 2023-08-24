@@ -1,5 +1,4 @@
 "use client"
-import { SearchComponent } from './components/search/search'
 import { useState, useEffect } from 'react'
 export default function Home()
 {
