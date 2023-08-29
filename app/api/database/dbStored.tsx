@@ -42,17 +42,17 @@ export class dbStored extends db<object>{
 
     public deleteProduct(id: string): Promise<DbProduct[]> {
         return new Promise(async (resolve, reject) => {
-            try {
-                this.products = this.products.filter((product: { id: string }) => product.id !== id);
-                resolve(this.products);
+            try {                 
+                data.shopping.forEach((obj: DbProduct, index) => {
+                    if (obj.id === id ) {
+                        data.shopping.splice(index, 1);
+                    }
+                });
+                resolve(data.shopping);
             } catch (error) {
                 reject(error);
             }
         });
-    }
-
-    public calcularTotal(): number {
-        return 1;
     }
 }
 

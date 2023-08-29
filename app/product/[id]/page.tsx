@@ -1,22 +1,19 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { usePost } from '../../hooks/usePost.hooks'
+import { useGet } from '../../hooks/useGet.hooks'
 
 export default function ProductId (
   { params: { id }}:
   {params: { id: string } }
 )
 {
-  const [data, setData] = useState( [] )
   const key = process.env.API_URL
-  useEffect( () => {
-    fetch( `http://${key}/api/${id}` )
-      .then( response => response.json() )
-      .then( data => {
-        setData( data.result )
-      } )
-      .catch( error => setData( error ) )
-  }, [id, key] )
-  if ( !data ) {
+  const { dataPost, setBody, loading, error } = usePost( `http://${key}/api/stored/`);
+  const { dataGet } = useGet( `http://${key}/api/${id}`); 
+  const [inputValue, setInputValue] = useState('');
+
+  if ( !dataGet ) {
     return (
       <section className="grid grid-cols-8">
         <div className="col-start-3 col-end-7">
@@ -30,18 +27,32 @@ export default function ProductId (
       <div className=" col-start-3 col-end-7">
         <section className="Product">
           {
-            data.map( ( item: any ) => {
+            dataGet.map( ( item: any ) => {
               return (
                 <div key={ item.id } >
                   <section className="img">
                     <img src={ item.image } alt={ item.name } />
                   </section>
                   <h2>{ item.name }</h2>
-                  <p>{ item.price }</p>
-                  <button>add to cart</button>
+                  <p>{ item.description }</p>
+                  <p>{ item.price }</p>    
+                  <p>{ item.sku }</p>
+                  <input type="number" value={inputValue} onChange={(event)=> setInputValue(event.target.value) } />  
+                  <button onClick={ ()=>{
+                        const postData = {
+                        id: id,
+                        number: Number(inputValue)
+                      };
+                      setBody(postData);
+                  } } >add to cart</button>
                 </div>
               )
             } )
+          }
+        </section>
+        <section>
+          {
+            <h1>{dataPost}</h1>
           }
         </section>
       </div>

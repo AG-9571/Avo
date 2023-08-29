@@ -5,24 +5,10 @@ import { IdbProducts } from '../Interfaces/IdbProduct'
 
 export class dbProducts extends db<Object> implements IdbProducts {
   constructor( 
-    private id: number,
-    private nombre: string, 
-    private precio: number
+
   ) 
   {
     super()
-  }
-
-  getId(): number {
-      return this.id;
-  }
-
-  getNombre(): string {
-      return this.nombre;
-  }
-
-  getPrecio(): number {
-      return this.precio;
   }
   public async renderAll() {
     const result = await this.getall( data.products )
