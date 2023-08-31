@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Component } from '../-Componets/v1.componet'
 
 export default function Home()
 {
@@ -15,27 +16,25 @@ export default function Home()
   }, [] )
 
   return (
-    <main className=" grid grid-cols-8">
+    <main className=" mt-11 grid grid-cols-8">
       <div className=" col-start-3 col-end-7">
         {         
           data.length === 0 ? 
-            <h2>no hay productos en el carrito</h2> 
-          :data.map( ( item: any ) => {
-            return (
-              <div key={ item.id } >
-                <section className="img">
-                  <img src={ item.image } alt={ item.name } />
-                </section>
-                <h2>{ item.name }</h2>
-                <p>{ item.price }</p>
-                <button>add to cart</button>
-              </div>
-            )
-          })
-        }    
+            <Component.NotStored />
+          :<Component.Stored data={data} />
+        }          
       </div>
-      <div>
-        <h2>Sub total: { data.length }</h2>
+      <hr className=' bg-gray-700 mt-4 col-start-4 col-end-6' />
+      <div className='col-start-3 col-end-7'>
+        <section className=' rounded-lg justify-between items-center flex p-4 mb-3 mt-6 border-green-300  border-[1px]' >
+          <div>
+            <h2 className=' font-semibold text-lg' >Car Product: { data.length }</h2>          
+            <h2 className=' font-semibold text-lg' >Sub Total: { data.length }</h2>          
+          </div>
+          <div>
+            <button className=' rounded-lg p-2 bg-green-500 text-white hove:bg-yellow-800'>Checkout</button>
+          </div>
+        </section>        
       </div>
     </main>
   )

@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes avo {
+  0%, 80%{
+    transform: rotateX(0deg);
+  }
+  90%, 95%{
+    transform: rotateX(65deg);
+  }
+  95%, 100%{
+    transform: rotateX(0deg);
+  }
+}
+
 :root {
   --foreground-rgb: #E3E4E9;
   --background-start-rgb: #E5E9ED;

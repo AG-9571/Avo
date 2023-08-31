@@ -12,7 +12,17 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-    },
+      keyframes: {
+        avokey: {
+          '0%': { transform: 'scale(1)' },
+          '50': { transform: 'scale(.5)' }, 
+          '100%': { transform: 'scale(1)' }
+        },
+        },
+      animation: {
+        avo: 'avo 4s 6s ease-in-out infinite',
+      }
+    }
   },
   plugins: [],
 }

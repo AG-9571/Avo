@@ -44,7 +44,7 @@ export async function POST( require: Request) {
         else{
             DATA.forEach((item: ICarItem) => {
                 if (item.id === id) {
-                    item.addCart += 1;
+                    item.addCart += number;
                 }
             });
         }

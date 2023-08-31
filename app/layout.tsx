@@ -1,8 +1,11 @@
+"use client"
 import '../public/globals.css'
-import { FooterComponents } from './components/footer/footerComponents'
-import { HeaderComponents } from './components/header/headerComponents'
+import { FooterComponents } from './-Componets/footer/footerComponents'
+import { HeaderComponents } from './-Componets/header/headerComponents'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { useGet } from './-Hooks/useGet.hooks'
+import { AppProvider } from './-Context/app.context'
 
 const inter = Inter( { subsets: ['latin'] } )
 
@@ -12,16 +15,18 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout( {
-  children,
+  children
 }: {
   children: React.ReactNode
 } ) {
   return (
     <html lang="en">
       <body className="">
-        <HeaderComponents />
-        {children}
-        <FooterComponents />
+        <AppProvider>
+          <HeaderComponents />
+          {children}
+          <FooterComponents />
+        </AppProvider>
       </body>
     </html>
   )
