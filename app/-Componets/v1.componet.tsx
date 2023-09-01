@@ -2,7 +2,7 @@ import { AttributesTable } from './tables/table-v1.component'
 import { TAttributesTableProps } from '../-Interfaces&Types/Table.type';
 import { ProductsAll , ProdoductFind } from './product/product-v1.component'
 import { LoadingHome, LoadingProduct } from './loadings/loadings-v1.component'
-import { IConponentProductFind, IComponentProps  } from '../-Interfaces&Types/Icomponets.interface'
+import { IConponentProductFind, IComponentProps, IComponentStored  } from '../-Interfaces&Types/Icomponets.interface'
 import { Stored , NotStored } from './stored/stored-v1.component'
 
 /** List of components
@@ -18,7 +18,7 @@ import { Stored , NotStored } from './stored/stored-v1.component'
  *    - NotStored
  */
 
-export class Component {
+export class Component {    
     // Table
     static AttributesTable ({shape, hardiness, taste }: TAttributesTableProps)
     {
@@ -55,11 +55,11 @@ export class Component {
         return (
             <NotStored />
         )
-    }
+    }    
 
-    static Stored ({data}: IComponentProps) {
+    static Stored ({data, deleteFetchData, GetFetchData}: IComponentStored ): React.ReactElement {
         return (
-            <Stored data={data} />
+            <Stored GetFetchData={GetFetchData} data={data} deleteFetchData={deleteFetchData} />
         )
     }
 }

@@ -10,3 +10,8 @@ export interface IConponentProductFind extends IComponentProps {
     PostLoading: boolean
     Postdata : []| never[]
 }
+
+export interface IComponentStored extends IComponentProps {    
+    deleteFetchData : (id: Object) => Promise<void>
+    GetFetchData: () => Promise<void> | void
+}

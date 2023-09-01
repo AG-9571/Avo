@@ -11,7 +11,7 @@ export default function ProductId (
   const key = process.env.API_URL
   const { dataGet:Getproduct, loading: productLoading } = useGet( `http://${key}/api/${id}`); 
   const { dataPost,fetchData,loading:PostLoading } = usePost( `http://${key}/api/stored/`);
-  const { dataGet:stored, loading: getloading, GetFetchData } = useGet(`http://${key}/api/stored/`);  
+  const { dataGet:stored, loading: GetStoredloading, GetFetchData } = useGet(`http://${key}/api/stored/`);  
 
   return (
     <main className=" mt-11 grid grid-cols-8">

@@ -1,8 +1,13 @@
-export function Stored({data}: {data: [] | never[]}) {
+import { IComponentStored } from '../../-Interfaces&Types/Icomponets.interface'
+import { IdbExtends } from '../../-Interfaces&Types/Idb.interface'
+import { useAppContext } from '../../-Context/app.context'
+
+export function Stored({data, deleteFetchData, GetFetchData}: IComponentStored) {
+    const { setCarNum } = useAppContext();
     return (
         <>
             {
-            data.map( ( item: any ) => {
+            data.map( ( item: IdbExtends ) => {
                 return (
                     <div key={ item.id } className=" mt-5 overflow-hidden p-3 gap-5 border-[1px] border-green-600 rounded-lg flex items-center " >
                         <section className="img w-1/7 h-20 justify-center flex">
@@ -11,10 +16,16 @@ export function Stored({data}: {data: [] | never[]}) {
                         <section className=" w-4/6">
                             <h2>{ item.name }</h2>
                             <p>{ item.price } x { item.addCart } </p>                            
-                            <p>Some more information goes here....</p>              
+                            <p>Some more information goes here....</p>  
+                            <p>{item.id}</p>                                   
                         </section>
                         <section className="flex justify-end w-1/6">
-                            <button className="px-4 py-2 border-gray-400 border-2 rounded-md" >X</button>
+                            <button onClick={ async()=>
+                                {
+                                    await deleteFetchData({id: item.id}) 
+                                    await GetFetchData()
+                                    await setCarNum(data.length) 
+                            }} className="px-4 py-2 border-gray-400 border-2 rounded-md" >X</button>
                         </section>
                     </div>
                     )

@@ -61,12 +61,21 @@ export async function POST( require: Request) {
     }
 }
 
-export async function DELETE() {
+export async function DELETE( require: Request) {
     try{
+        const body = await require.json();
+        const { id } = body;
         const stored = await new dbStored();        
-        const result = await stored.deleteProduct("6HrdgMkj");
+        const result = await stored.deleteProduct(id);
 
-        return new Response( JSON.stringify( { status: "200 OK" , messenge: "Item has been successfully removed from your shopping cart." } ), {
+        if(id === null || id === undefined || id === '') {
+            return new Response( JSON.stringify( { status: "400", error: 'El ID es requerido '} ), {
+                status: 400,
+                headers: { 'content-type': 'application/json' },
+            } )
+        }        
+
+        return new Response( JSON.stringify( { status: "200 OK" , result: "Item has been successfully removed from your shopping cart." } ), {
             status: 200,
             headers: { 'content-type': 'application/json' },
         } )
