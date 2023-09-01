@@ -3,7 +3,7 @@ import  Link  from 'next/link'
 
 export const FooterComponents = () => {
   return (
-    <footer className=" border-t-2 grid grid-cols-8">
+    <footer className=" bg-gray-100 border-t-2 grid grid-cols-8">
       <section className=" mt-12  mb-6 p-2 w-full grid grid-cols-3  max-w-5xl col-start-3 col-end-7">
         <div>
           <h4 className=' w-full font-semibold text-lg'>Nosotros</h4>

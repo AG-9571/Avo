@@ -4,13 +4,18 @@ export function Stored({data}: {data: [] | never[]}) {
             {
             data.map( ( item: any ) => {
                 return (
-                    <div key={ item.id } >
-                        <section className="img">
-                        <img src={ item.image } alt={ item.name } />
+                    <div key={ item.id } className=" mt-5 overflow-hidden p-3 gap-5 border-[1px] border-green-600 rounded-lg flex items-center " >
+                        <section className="img w-1/7 h-20 justify-center flex">
+                            <img className=" h-full border-2 rounded-md " src={ item.image } alt={ item.name } />
                         </section>
-                        <h2>{ item.name }</h2>
-                        <p>{ item.price }</p>
-                        <p>{ item.addCart }</p>                
+                        <section className=" w-4/6">
+                            <h2>{ item.name }</h2>
+                            <p>{ item.price } x { item.addCart } </p>                            
+                            <p>Some more information goes here....</p>              
+                        </section>
+                        <section className="flex justify-end w-1/6">
+                            <button className="px-4 py-2 border-gray-400 border-2 rounded-md" >X</button>
+                        </section>
                     </div>
                     )
                 })
