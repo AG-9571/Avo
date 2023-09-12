@@ -1,4 +1,3 @@
-"use client"
 import '../public/globals.css'
 import { FooterComponents } from './-Componets/footer/footerComponents'
 import { HeaderComponents } from './-Componets/header/headerComponents'
