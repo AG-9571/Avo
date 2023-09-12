@@ -1,3 +1,4 @@
+"use client"
 import { IconCart, IconLogo } from '../icons/icons'
 import { useAppContext } from '../../-Context/app.context'
 import { useState ,useEffect } from 'react'
