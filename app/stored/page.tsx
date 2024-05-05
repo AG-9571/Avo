@@ -9,11 +9,12 @@ import { useGet } from '../-Hooks/useGet.hooks'
 export default function Home()
 {
   const [data, setData] = useState( [] )
+  /**Key acces variable */
   const key = process.env.API_URL
-  const { data: dataDelete, loading, fetchData } = useDelete(`http://${key}/api/stored/`);
-  const { dataGet ,GetFetchData } = useGet(`http://${key}/api/stored/`);
+  const { data: dataDelete, loading, fetchData } = useDelete( key? `https://${key}/api/stored/`:"/api/stored/");
+  const { dataGet ,GetFetchData } = useGet( key?`https://${key}/api/stored/`: "/api/stored");
   useEffect( () => {
-    axios.get( `http://${key}/api/stored/`)
+    axios.get(key?`https://${key}/api/stored/`: "/api/stored/")
     .then( (response: any) =>{
       setData( response.data.result )
       }).catch( error => setData( error ) )

@@ -8,9 +8,9 @@ import Link from 'next/link'
 export const HeaderComponents = () => {
   const key = process.env.API_URL
   const { CarNum, setCarNum } = useAppContext() 
-  const { dataGet } = useGet(`http://${key}/api/stored/`); 
+  const { dataGet } = useGet(key?`http://${key}/api/stored/`: "./api/stored"); 
   const [ ClassUrlStored, setClassUrlStored] = useState('');
-  const [ ClassUrlHome, setClassUrlHome] = useState('');  
+  const [ ClassUrlHome, setClassUrlHome] = useState('');    
   
   useEffect(() => {
     const currentPath = window.location.pathname;
@@ -29,13 +29,13 @@ export const HeaderComponents = () => {
     <header className=" shadow-lg mt-2 mx-4  border-2 rounded-md heade h-17 px-2 py-2 grid grid-cols-8">
       <section className=" flex justify-between  max-w-5xl col-start-3 col-end-7">
         <div>
-          <Link className={`flex ${ClassUrlHome} pr-2 justify-start p-1 rounded-md items-center w-full`} href="http://localhost:3000/">
+          <Link className={`flex ${ClassUrlHome} pr-2 justify-start p-1 rounded-md items-center w-full`} href={key?`http://${key}`:"http://localhost:3000/"}>
             <IconLogo className={' h-10 '} />
             <p className="">Avo Store</p>
           </Link>
         </div>
         <div>
-          <Link className={`flex ${ClassUrlStored}  p-1 rounded-md justify-end items-center `} href="http://localhost:3000/stored">
+          <Link className={`flex ${ClassUrlStored}  p-1 rounded-md justify-end items-center `} href={key?"https://avostored.azurewebsites.net/stored": "http://localhost:3000/stored"}>
             <IconCart className={' h-10 '} />
             <p className='ml-2' color='' >
               Stored

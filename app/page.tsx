@@ -7,8 +7,9 @@ import { IconLogo } from './-Componets/icons/icons'
 
 export default function Home()
 {  
-  const key = process.env.API_URL
-  const {dataGet, loading} = useGet( `http://${key}/api/` )  
+  const key = process.env.NEXT_PUBLIC_API_URL
+  console.log(key)
+  const {dataGet, loading} = useGet( key?`https://${key}/api/`: "./api" )
   
   return (
     <main className=" mb-10 grid grid-cols-8">
